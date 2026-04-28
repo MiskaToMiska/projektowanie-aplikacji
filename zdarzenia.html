@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sklep Owocowy</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f8fafc;
+        color: #334155;
+      }
+
+      header {
+        background-color: #0f172a;
+        padding: 20px;
+        text-align: center;
+      }
+
+      header h1 {
+        color: #f8fafc;
+        margin: 10px 0 0 0;
+        font-size: 1.5rem;
+        letter-spacing: 1px;
+      }
+
+      .logo {
+        max-width: 150px;
+        height: auto;
+      }
+
+      main {
+        padding: 20px;
+        max-width: 1200px; /* Ogranicza szerokość siatki na dużych ekranach */
+        margin: 0 auto;
+      }
+
+      .grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 25px;
+      }
+
+      .grid-container img {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+        /* Skrypt wizualny (zastępuje potrzebę JS) */
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+        cursor: pointer;
+      }
+
+      .grid-container img:hover {
+        transform: scale(1.05); /* Lekkie powiększenie */
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2); /* Pogłębienie cienia */
+      }
+
+      footer {
+        background-color: #1e293b;
+        color: #cbd5e1;
+        text-align: center;
+        padding: 15px;
+        margin-top: 40px;
+        font-size: 0.9rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img src="/dżawaSkript/img/logo.png" alt="Logo Sklepu" class="logo" />
+      <h1>SKLEP OWOCOWY</h1>
+    </header>
+
+    <main>
+      <div class="grid-container">
+        <img src="/dżawaSkript/img/jablko.jpg" alt="Jabłko" />
+        <img src="/dżawaSkript/img/banan.webp" alt="Banan" />
+        <img src="/dżawaSkript/img/ananas.jpg" alt="Ananas" />
+        <img src="/dżawaSkript/img/gruszka.webp" alt="Gruszka" />
+        <img src="/dżawaSkript/img/wisnia.webp" alt="Wiśnia" />
+        <img src="/dżawaSkript/img/pomarancza.webp" alt="Pomarańcza" />
+      </div>
+    </main>
+
+    <footer>© 2026 Sklep Owocowy</footer>
+  </body>
+</html>
