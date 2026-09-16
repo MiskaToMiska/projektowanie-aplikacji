@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: opensans, sans-serif;
+  background-color: #1e1d23;
+  font-size: 36px;
+}
+p1,
+p2 {
+  display: none;
+}
+show {
+  display: block;
+}
+
+.square {
+  width: 250px;
+  height: 250px;
+  background-color: gold;
+  border-radius: 6px;
+}
+button {
+  padding: 20px 40px;
+  margin: 20px;
+  cursor: pointer;
+  background: none;
+  color: #fff;
+  border: 3px solid white;
+  border-radius: 4px;
+}
+button:hover {
+  background-color: #ddd;
+  color: black;
+}
