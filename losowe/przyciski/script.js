@@ -8,4 +8,20 @@ const fun1 = () => {
   console.log("czesc");
 };
 
+const func2 = () => {
+  square.style.backgroundColor = "pink";
+};
+
+const func3 = () => {
+  square.style.backgroundColor = "blue";
+};
+
+const func4 = () => {
+  p1.classList.toggle("show");
+  p2.classList.toggle("show");
+};
+
 btn1.addEventListener("click", fun1);
+square.addEventListener("mouseover", func2);
+square.addEventListener("mouseleave", func3);
+btn2.addEventListener("click", func4);
