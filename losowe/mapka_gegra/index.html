@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mapa Krain Geograficznych Polski</title>
+
+    <!-- Pobranie biblioteki Leaflet (Darmowe API Map) -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f4f4f9;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      h1 {
+        color: #333;
+        margin-bottom: 15px;
+      }
+
+      #map {
+        width: 100%;
+        max-width: 1000px;
+        height: 650px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Własne style dla znaczników (kropek) */
+      .custom-marker {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        border: 2px solid #fff;
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+      }
+
+      /* Kolory krain */
+      .pobrzeza {
+        background-color: #00bcd4;
+      }
+      .zulawy {
+        background-color: #00e676;
+      }
+      .pojezierza {
+        background-color: #29b6f6;
+      }
+      .niziny {
+        background-color: #8bc34a;
+      }
+      .wyzyny {
+        background-color: #ffca28;
+      }
+      .kotliny {
+        background-color: #ff7043;
+      }
+      .gory {
+        background-color: #e53935;
+      }
+
+      /* Styl podpowiedzi z nazwą (Tooltip) */
+      .leaflet-tooltip {
+        font-weight: bold;
+        font-size: 11px;
+        padding: 3px 7px;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Krainy Geograficzne Polski</h1>
+    <div id="map"></div>
+
+    <script>
+      // 1. Inicjalizacja mapy wyśrodkowanej na Polskę
+      const map = L.map("map").setView([52.0, 19.3], 6.5);
+
+      // 2. Pobranie darmowego podkładu mapy z OpenStreetMap API
+      // Zamień stary serwer OpenStreetMap na darmowy serwer CartoDB:
+      L.tileLayer(
+        "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
+        {
+          maxZoom: 18,
+          attribution: "© OpenStreetMap contributors © CARTO",
+        },
+      ).addTo(map);
+      // 3. Dane punktów (szerokość °N, długość °E)
+      const krainy = [
+        // Pobrzeża
+        {
+          name: "Pobrzeże Szczecińskie",
+          lat: 53.7,
+          lon: 14.6,
+          type: "pobrzeza",
+        },
+        {
+          name: "Pobrzeże Koszalińskie",
+          lat: 54.2,
+          lon: 16.18,
+          type: "pobrzeza",
+        },
+        { name: "Pobrzeże Słowińskie", lat: 54.7, lon: 17.2, type: "pobrzeza" },
+        { name: "Pobrzeże Gdańskie", lat: 54.4, lon: 18.6, type: "pobrzeza" },
+
+        // Żuławy
+        { name: "Żuławy Wiślane", lat: 54.15, lon: 19.0, type: "zulawy" },
+
+        // Pojezierza
+        {
+          name: "Pojezierze Pomorskie",
+          lat: 53.8,
+          lon: 16.0,
+          type: "pojezierza",
+        },
+        {
+          name: "Pojezierze Wielkopolskie",
+          lat: 52.4,
+          lon: 16.9,
+          type: "pojezierza",
+        },
+        {
+          name: "Pojezierze Mazurskie",
+          lat: 53.8,
+          lon: 21.5,
+          type: "pojezierza",
+        },
+
+        // Niziny i Polesie
+        { name: "Nizina Wielkopolska", lat: 51.8, lon: 17.5, type: "niziny" },
+        { name: "Nizina Mazowiecka", lat: 52.3, lon: 21.0, type: "niziny" },
+        { name: "Nizina Podlaska", lat: 53.1, lon: 22.9, type: "niziny" },
+        { name: "Nizina Śląska", lat: 51.1, lon: 17.0, type: "niziny" },
+        { name: "Polesie Lubelskie", lat: 51.4, lon: 23.2, type: "niziny" },
+
+        // Wyżyny
+        { name: "Wyżyna Śląska", lat: 50.3, lon: 19.0, type: "wyzyny" },
+        {
+          name: "Wyżyna Krakowsko-Częstochowska",
+          lat: 50.4,
+          lon: 19.5,
+          type: "wyzyny",
+        },
+        {
+          name: "Wyżyna Małopolska + Góry Świętokrzyskie",
+          lat: 50.85,
+          lon: 20.9,
+          type: "wyzyny",
+        },
+        { name: "Niecka Nidziańska", lat: 50.4, lon: 20.5, type: "wyzyny" },
+        {
+          name: "Wyżyna Lubelska + Roztocze",
+          lat: 50.75,
+          lon: 22.8,
+          type: "wyzyny",
+        },
+
+        // Kotliny
+        { name: "Kotlina Oświęcimska", lat: 50.0, lon: 19.2, type: "kotliny" },
+        { name: "Kotlina Sandomierska", lat: 50.1, lon: 21.5, type: "kotliny" },
+
+        // Sudety
+        { name: "Góry Izerskie", lat: 50.85, lon: 15.35, type: "gory" },
+        { name: "Karkonosze", lat: 50.75, lon: 15.74, type: "gory" },
+        { name: "Góry Stołowe", lat: 50.47, lon: 16.33, type: "gory" },
+
+        // Karpaty
+        { name: "Beskidy", lat: 49.65, lon: 19.5, type: "gory" },
+        { name: "Gorce", lat: 49.55, lon: 20.15, type: "gory" },
+        { name: "Pieniny", lat: 49.42, lon: 20.37, type: "gory" },
+        { name: "Tatry", lat: 49.25, lon: 19.98, type: "gory" },
+        { name: "Bieszczady", lat: 49.1, lon: 22.6, type: "gory" },
+      ];
+
+      // 4. Pętla dodająca punkty i etykiety do mapy
+      krainy.forEach((kraina) => {
+        const customIcon = L.divIcon({
+          className: `custom-marker ${kraina.type}`,
+          iconSize: [12, 12],
+          iconAnchor: [6, 6],
+        });
+
+        L.marker([kraina.lat, kraina.lon], { icon: customIcon })
+          .addTo(map)
+          .bindTooltip(kraina.name, {
+            permanent: true,
+            direction: "top",
+            offset: [0, -6],
+          });
+      });
+    </script>
+  </body>
+</html>
