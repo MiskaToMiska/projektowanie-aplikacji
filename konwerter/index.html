@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <label for="konwerter_box">
+      Konwerter
+      <span class="one">°C</span>
+      na
+      <span class="two">°F</span>
+    </label>
+    <input
+      type="number"
+      id="konwerter_box"
+      name="konwerter_box"
+      placeholder="Wpisz liczbę..."
+    />
+    <p class="result"></p>
+    <div class="przyciski">
+      <button class="przycisk" onclick="konwertuj()" id="convert">
+        Konwertuj
+      </button>
+      <button class="przycisk" onclick="reset()" id="reset">Reset</button>
+      <button class="przycisk" onclick="swap()" id="change">Zmień</button>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
