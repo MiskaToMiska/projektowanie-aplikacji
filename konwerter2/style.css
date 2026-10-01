@@ -1,0 +1,63 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #000000;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  font-family:
+    "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 24px;
+}
+
+label {
+  font-size: 34px;
+}
+
+input {
+  margin-top: 20px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 18px;
+  outline: none;
+  text-align: center;
+}
+
+.result {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  min-height: 30px;
+}
+
+.przyciski,
+.przyciski2 {
+  display: flex;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.przycisk {
+  border: 2px solid #ffffff;
+  color: #fff;
+  padding: 10px 15px;
+  text-transform: uppercase;
+  border-radius: 7px;
+  cursor: pointer;
+  background: none;
+  font-size: 16px;
+  transition: 0.1s ease-in;
+}
+
+.przycisk:hover {
+  color: #000;
+  background-color: #ddd;
+}
