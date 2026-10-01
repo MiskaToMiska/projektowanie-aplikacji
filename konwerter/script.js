@@ -20,4 +20,21 @@ const swap = () => {
     two.textContent = "°F";
   }
 };
-function reset() {}
+const reset = () => {
+  result.textContent = "";
+};
+const convert = () => {
+  if (one.textContent === "°C") {
+    cels = parseFloat(konwerter_box.value);
+    fahr = (cels * 9) / 5 + 32;
+    result.textContent = `${fahr.toFixed(2)}°F`;
+  } else if (one.textContent === "°F") {
+    fahr = parseFloat(konwerter_box.value);
+    cels = ((fahr - 32) * 5) / 9;
+    result.textContent = `${cels.toFixed(2)}°C`;
+  }
+};
+
+convBtn.addEventListener("click", convert);
+resetBtn.addEventListener("click", reset);
+changeBtn.addEventListener("click", swap);
