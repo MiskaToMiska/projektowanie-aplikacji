@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kalkulator BMI</title>
+  </head>
+  <body>
+    <label for="waga">Waga (kg):</label>
+    <input type="number" id="waga" placeholder="np. 65" />
+
+    <br /><br />
+
+    <label for="wzrost">Wzrost (cm):</label>
+    <input type="number" id="wzrost" placeholder="np. 170" />
+
+    <br /><br />
+
+    <button id="oblicz" type="button">Oblicz BMI</button>
+
+    <p id="wynik"></p>
+
+    <script>
+      const button = document.getElementById("oblicz");
+      const wynik = document.getElementById("wynik");
+
+      button.addEventListener("click", function () {
+        const waga = Number(document.getElementById("waga").value);
+        const wzrost = Number(document.getElementById("wzrost").value);
+
+        const bmi = waga / (wzrost / 100) ** 2;
+        if (waga > 0 && wzrost > 0) {
+          wynik.textContent = "Twoje BMI: " + bmi.toFixed(2);
+        } else {
+          wynik.textContent = "Wpisz poprawne dane!";
+        }
+
+        if (bmi < 18.5) {
+          wynik.textContent += " - Niedowaga";
+        } else if (bmi >= 18.5 && bmi < 24.9) {
+          wynik.textContent += " - Waga prawidłowa";
+        } else if (bmi >= 25 && bmi < 29.9) {
+          wynik.textContent += " - Nadwaga";
+        } else if (bmi >= 30) {
+          wynik.textContent += " - Otyłość";
+        }
+      });
+    </script>
+  </body>
+</html>

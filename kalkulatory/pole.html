@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>POLE</h1>
+    bok 1: <input type="number" id="bok1" name="bok1" required /><br /><br />
+    bok 2: <input type="number" id="bok2" name="bok2" required /><br /><br />
+    <input
+      type="button"
+      value="Oblicz pole"
+      onclick="obliczPole()"
+    /><br /><br />
+    <input
+      type="button"
+      value="Oblicz obwód"
+      onclick="obliczObwod()"
+    /><br /><br />
+    <script>
+      function obliczPole() {
+        const bok1 = parseFloat(document.getElementById("bok1").value);
+        const bok2 = parseFloat(document.getElementById("bok2").value);
+
+        if (isNaN(bok1) || isNaN(bok2) || bok1 <= 0 || bok2 <= 0) {
+          alert("Wpisz poprawne dane!");
+          return;
+        }
+
+        const figura = bok1 === bok2 ? "kwadratu" : "prostokąta";
+        const pole = bok1 * bok2;
+
+        alert("Pole " + figura + ": " + pole.toFixed(2));
+      }
+
+      function obliczObwod() {
+        const bok1 = parseFloat(document.getElementById("bok1").value);
+        const bok2 = parseFloat(document.getElementById("bok2").value);
+
+        if (isNaN(bok1) || isNaN(bok2) || bok1 <= 0 || bok2 <= 0) {
+          alert("Wpisz poprawne dane!");
+          return;
+        }
+
+        const figura = bok1 === bok2 ? "kwadratu" : "prostokąta";
+        const obwod = 2 * (bok1 + bok2);
+
+        alert("Obwód " + figura + ": " + obwod.toFixed(2));
+      }
+    </script>
+  </body>
+</html>

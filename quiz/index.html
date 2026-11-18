@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz o Filmach</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        color: #333;
+        margin: 0;
+        padding: 20px;
+      }
+      main {
+        max-width: 700px;
+        margin: 0 auto;
+        background: #fff;
+        padding: 25px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        text-align: center;
+        color: #222;
+      }
+      fieldset {
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        margin-bottom: 20px;
+        padding: 15px;
+      }
+      legend {
+        font-weight: bold;
+        padding: 0 8px;
+      }
+      label {
+        display: block;
+        padding: 8px 10px;
+        margin: 5px 0;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+      }
+      label:hover {
+        background-color: #f0f0f0;
+      }
+      .dobrze {
+        background-color: #d4edda !important;
+        color: #155724;
+        font-weight: bold;
+      }
+      .zle {
+        background-color: #f8d7da !important;
+        color: #721c24;
+      }
+      button {
+        display: block;
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+        font-weight: bold;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      footer {
+        text-align: center;
+        margin-top: 20px;
+        color: #666;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Wielki Quiz Filmowy</h1>
+      <form id="film-quiz">
+        <fieldset>
+          <legend>1. Kto wyreżyserował film „Interstellar” (2014)?</legend>
+          <label><input type="radio" name="q1" /> Steven Spielberg</label>
+          <label
+            ><input type="radio" name="q1" data-correct="true" /> Christopher
+            Nolan</label
+          >
+          <label><input type="radio" name="q1" /> Quentin Tarantino</label>
+          <label><input type="radio" name="q1" /> Martin Scorsese</label>
+        </fieldset>
+
+        <fieldset>
+          <legend>
+            2. Jak nazywa się fikcyjny metal, z którego zrobiona jest tarcza
+            Kapitana Ameryki?
+          </legend>
+          <label><input type="radio" name="q2" /> Adamantium</label>
+          <label><input type="radio" name="q2" /> Beskar</label>
+          <label
+            ><input type="radio" name="q2" data-correct="true" />
+            Vibranium</label
+          >
+          <label><input type="radio" name="q2" /> Mithril</label>
+        </fieldset>
+
+        <fieldset>
+          <legend>
+            3. Ile głównych, solowych filmów aktorskich o Batmanie powstało w
+            latach 1966–2022?
+          </legend>
+          <label><input type="radio" name="q3" /> 6</label>
+          <label><input type="radio" name="q3" data-correct="true" /> 9</label>
+          <label><input type="radio" name="q3" /> 12</label>
+          <label><input type="radio" name="q3" /> 15</label>
+        </fieldset>
+
+        <fieldset>
+          <legend>
+            4. W jakim mieście rozgrywa się akcja większości filmów o Batmanie?
+          </legend>
+          <label><input type="radio" name="q4" /> Metropolis</label>
+          <label><input type="radio" name="q4" /> Star City</label>
+          <label><input type="radio" name="q4" /> Central City</label>
+          <label
+            ><input type="radio" name="q4" data-correct="true" /> Gotham
+            City</label
+          >
+        </fieldset>
+
+        <fieldset>
+          <legend>5. Kto zagrał główną rolę w filmie „Forrest Gump”?</legend>
+          <label><input type="radio" name="q5" /> Brad Pitt</label>
+          <label
+            ><input type="radio" name="q5" data-correct="true" /> Tom
+            Hanks</label
+          >
+          <label><input type="radio" name="q5" /> Leonardo DiCaprio</label>
+          <label><input type="radio" name="q5" /> Robin Williams</label>
+        </fieldset>
+
+        <fieldset>
+          <legend>
+            6. Jakiego koloru pigułkę wybiera Neo w filmie „Matrix”?
+          </legend>
+          <label><input type="radio" name="q6" /> Niebieską</label>
+          <label><input type="radio" name="q6" /> Zieloną</label>
+          <label
+            ><input type="radio" name="q6" data-correct="true" />
+            Czerwoną</label
+          >
+          <label><input type="radio" name="q6" /> Żółtą</label>
+        </fieldset>
+
+        <fieldset>
+          <legend>
+            7. Który reżyser stworzył pierwszą aktorską trylogię „Spidermana”?
+          </legend>
+          <label
+            ><input type="radio" name="q7" data-correct="true" /> Sam
+            Raimi</label
+          >
+          <label><input type="radio" name="q7" /> George Lucas</label>
+          <label><input type="radio" name="q7" /> Ridley Scott</label>
+          <label><input type="radio" name="q7" /> James Cameron</label>
+        </fieldset>
+
+        <fieldset>
+          <legend>
+            8. W którym roku odbyła się premiera pierwszego filmu z sagi
+            „Gwiezdne wojny” (Nowa nadzieja)?
+          </legend>
+          <label><input type="radio" name="q8" /> 1975</label>
+          <label
+            ><input type="radio" name="q8" data-correct="true" /> 1977</label
+          >
+          <label><input type="radio" name="q8" /> 1980</label>
+          <label><input type="radio" name="q8" /> 1983</label>
+        </fieldset>
+
+        <fieldset>
+          <legend>
+            9. Jak nazywa się sztuczna inteligencja stworzona przez Tony'ego
+            Starka (Iron Mana)?
+          </legend>
+          <label><input type="radio" name="q9" /> Skynet</label>
+          <label><input type="radio" name="q9" /> HAL 9000</label>
+          <label
+            ><input type="radio" name="q9" data-correct="true" />
+            J.A.R.V.I.S.</label
+          >
+          <label><input type="radio" name="q9" /> TARS</label>
+        </fieldset>
+
+        <fieldset>
+          <legend>
+            10. Kto skomponował muzykę do filmów „Król Lew”, „Interstellar” oraz
+            „Diuna”?
+          </legend>
+          <label><input type="radio" name="q10" /> John Williams</label>
+          <label><input type="radio" name="q10" /> Ennio Morricone</label>
+          <label><input type="radio" name="q10" /> Howard Shore</label>
+          <label
+            ><input type="radio" name="q10" data-correct="true" /> Hans
+            Zimmer</label
+          >
+        </fieldset>
+
+        <button type="button" onclick="checkAnswers()">Sprawdź wynik</button>
+      </form>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 Quiz o Filmach. Wszelkie prawa zastrzeżone.</p>
+    </footer>
+
+    <script>
+      function checkAnswers() {
+        const allLabels = document.querySelectorAll("label");
+        let score = 0;
+
+        allLabels.forEach((label) => {
+          const radio = label.querySelector("input");
+
+          label.classList.remove("dobrze", "zle");
+
+          if (radio.dataset.correct === "true") {
+            label.classList.add("dobrze");
+            if (radio.checked) {
+              score++;
+            }
+          } else if (radio.checked) {
+            label.classList.add("zle");
+          }
+        });
+
+        alert(`Twój wynik: ${score} / 10`);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formularz osobowy</title>
+  </head>
+  <body>
+    <h1>PROSZĘ WYPEŁNIĆ FORMULARZ</h1>
+
+    <form id="myForm" action="" method="post">
+      <h2>Dane osobowe</h2>
+
+      <label for="name">Imię:</label>
+      <input type="text" id="name" name="name" required /><br /><br />
+
+      <label for="surname">Nazwisko:</label>
+      <input type="text" id="surname" name="surname" required /><br /><br />
+
+      <label for="city">Miasto:</label>
+      <input type="text" id="city" name="city" required /><br /><br />
+
+      <label for="state">Województwo:</label>
+      <input type="text" id="state" name="state" required /><br /><br />
+
+      <input type="submit" value="Wyślij" />
+    </form>
+
+    <script>
+      const form = document.getElementById("myForm");
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const formData = new FormData(form);
+
+        const data = {
+          name: formData.get("name"),
+          surname: formData.get("surname"),
+          city: formData.get("city"),
+          state: formData.get("state"),
+        };
+
+        console.log("--- Otrzymane dane z formularza ---");
+        console.log("Imię:", data.name);
+        console.log("Nazwisko:", data.surname);
+        console.log("Miasto:", data.city);
+        console.log("Województwo:", data.state);
+        console.log("Pełny obiekt:", data);
+      });
+    </script>
+  </body>
+</html>

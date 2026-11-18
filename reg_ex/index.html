@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!--
+        symbole wzorca
+        ^ - początek ciągu
+        $ - koniec ciągu
+        . - dowolny znak
+        * - zero lub więcej wystąpień poprzedniego znaku
+        + - jeden lub więcej wystąpień poprzedniego znaku
+        [] - dowolny znak z podanego zakresu
+        [^] - dowolny znak nie należący do podanego zakresu
+        | - alternatywa (lub)
+        {3} - dokładnie 3 wystąpienia poprzedniego znaku
+        {3,} - co najmniej 3 wystąpienia poprzedniego znaku
+        {3,5} - od 3 do 5 wystąpień poprzedniego znaku
+        () - grupowanie
+        \. - znak kropki
+        \ - ignorowanie wielkości liter
+        klasy znaków
+        \d - cyfra
+        \D - nie-cyfra
+        \w - znak alfanumeryczny czyli litera, cyfra lub znak specjalny
+        \W - nie-znak alfanumeryczny czyli nie litera, nie cyfra, nie znak specjalny
+        \s - biały znak (spacja, tabulator, nowa linia) czyli znak specjalny
+        \S - nie-biały znak czyli cyfra, litera lub znak specjalny
+
+
+        kod pocztowy
+        /^[0-9]{2}-[0-9]{3}$/
+        z klasą znaków
+        /^\d{2}-[\d]{3}$/
+    -->
+    <form action="">
+      <h4>FORMULARZ REJESTRACYJNY</h4>
+      imie:<br />
+      <input type="text" name="imie" id="imie" required /><br />
+      nazwisko:<br />
+      <input type="text" name="nazwisko" id="nazwisko" required /><br />
+      email:<br />
+      <input type="email" name="email" id="email" required /><br />
+      kod pocztowy:<br />
+      <input type="text" name="kod_pocztowy" id="kod_pocztowy" required /><br />
+      telefon:<br />
+      <input type="text" name="telefon" id="telefon" required value="+" /><br />
+      <input type="submit" value="Zarejestruj" onclick="sprawdz_formularz()" />
+    </form>
+    <script>
+      function sprawdz_formularz() {
+        let imie = document.querySelector("#imie").value;
+        let nazwisko = document.querySelector("#nazwisko").value;
+        let email = document.querySelector("#email").value;
+        let kod_pocztowy = document.querySelector("#kod_pocztowy").value;
+        let telefon = document.querySelector("#telefon").value;
+
+        let wzorzec_imie = /^[A-ZŻŁ][a-zół]{3,}$/.exec(imie);
+        let wzorzec_nazwisko = /^[A-Z][a-zżźćłóąń]{2,}$/.exec(nazwisko);
+        let wzorzec_email =
+          /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{3,}$/.exec(email);
+        let wzorzec_kod_pocztowy = /^[0-9]{2}-[0-9]{3}$/.exec(kod_pocztowy);
+        let wzorzec_telefon = /^\+[0-9]{1,3}[0-9]{9}$/.exec(telefon);
+
+        if (!imie.match(wzorzec_imie)) {
+          alert("Niepoprawne imię");
+          return false;
+        } else {
+          alert("Imie jest poprawne");
+        }
+        if (!wzorzec_nazwisko) {
+          alert("Niepoprawne nazwisko");
+          return false;
+        } else {
+          alert("Nazwisko jest poprawmne");
+        }
+        if (!wzorzec_email) {
+          alert("Niepoprawne email");
+          return false;
+        } else {
+          console.log("Email jest poprawny");
+        }
+        if (!wzorzec_kod_pocztowy) {
+          alert("Niepoprawne kod pocztowy");
+          return false;
+        } else {
+          alert("Kod pocztowy jest poprawny");
+        }
+        if (!wzorzec_telefon) {
+          alert("Niepoprawny telefon");
+          return false;
+        } else {
+          console.log("Telefon jest poprawny");
+        }
+      }
+    </script>
+  </body>
+</html>

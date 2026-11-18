@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>formatowanie tekstu</title>
+    <link rel="stylesheet" href="form3.css" />
+    <style>
+      * {
+        box-sizing: border-box;
+
+        padding: 0;
+        margin: 0;
+      }
+      header {
+        background-color: royalblue;
+        color: black;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        height: 60px;
+        line-height: 60px;
+        font-style: italic;
+        font-size: 20px;
+      }
+      main {
+        color: black;
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: row;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        height: 60vh;
+      }
+      .box {
+        display: flex;
+        flex-direction: row;
+        height: 30vh;
+        background-color: #b9c07e;
+        justify-content: space-between;
+      }
+      #lewa,
+      #prawa,
+      #srodek {
+        display: flex;
+        flex-direction: column;
+      }
+      #lewa {
+        margin-left: 50px;
+      }
+      #prawa {
+        margin-right: 50px;
+      }
+      footer {
+        background-color: royalblue;
+        color: black;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        height: 60px;
+        line-height: 60px;
+        font-style: italic;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <p>formatowanie tekstu</p>
+    </header>
+    <main>
+      <span>przykładowy tekst</span>
+    </main>
+    <div class="box">
+      <section id="lewa">
+        wpisz tekst <br />
+        <input type="text" id="tresc" maxlength="20" /><br />
+        <input type="button" value="zastosuj" onclick="zmienTekst()" />
+      </section>
+      <section id="srodek">
+        kolor tekstu <br />
+        R:
+        <input
+          type="range"
+          id="r"
+          min="0"
+          max="255"
+          value="0"
+          oninput="zmienKolor()"
+        /><br />
+        G:
+        <input
+          type="range"
+          id="g"
+          min="0"
+          max="255"
+          value="0"
+          oninput="zmienKolor()"
+        /><br />
+        B:
+        <input
+          type="range"
+          id="b"
+          min="0"
+          max="255"
+          value="0"
+          oninput="zmienKolor()"
+        />
+      </section>
+      <section id="prawa">
+        rozmiar tekstu
+        <input
+          type="number"
+          id="rozmiar"
+          min="100"
+          max="200"
+          step="5"
+          onchange="zmienRozmiar()"
+        />
+      </section>
+    </div>
+    <footer>
+      <p>koniec zadania</p>
+    </footer>
+    <script>
+      function zmienTekst() {
+        const tresc = document.getElementById("tresc").value;
+        const main = document.querySelector("main span");
+        main.textContent = tresc;
+      }
+
+      function zmienKolor() {
+        const r = document.getElementById("r").value;
+        const g = document.getElementById("g").value;
+        const b = document.getElementById("b").value;
+        const main = document.querySelector("main span");
+        main.style.color = `rgb(${r}, ${g}, ${b})`;
+      }
+
+      function zmienRozmiar() {
+        const rozmiar = document.getElementById("rozmiar").value;
+        const main = document.querySelector("main span");
+        main.style.fontSize = `${rozmiar}px`;
+      }
+    </script>
+  </body>
+</html>
